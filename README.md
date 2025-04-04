@@ -9,16 +9,16 @@
 - [Tehnologii și concepte criptografice utilizate](#Tehnologii-si-concepte-criptografice-utilizate)
 - [Bibliografie](#bibliografie)
 ## Scop
-	Principalul obiectiv al proiectului constă în implementarea corectă și eficientă a conceptelor esențiale din domeniul securității informatice: confidențialitatea, integritatea, și non-repudierea.
-	Proiectul se axează pe securizarea transmiterii unor imagini, folosind criptarea simetrică (Fernet) și criptarea asimetrică (RSA). În plus, imaginilor criptate li se aplică și funcția hash (SHA256) pentru a proteja conținutul și a asigura integritatea acestora.
-	Pentru sporirea securității și minimizarea riscului interceptării datelor în procesul de transmitere, cheile utilizate pentru criptarea simetrică sunt, la rândul lor, criptate prin intermediul criptării asimetrice RSA, iar documentul rezultat este semnat digital.
+   Principalul obiectiv al proiectului constă în implementarea corectă și eficientă a conceptelor esențiale din domeniul securității informatice: confidențialitatea, integritatea, și non-repudierea.
+   Proiectul se axează pe securizarea transmiterii unor imagini, folosind criptarea simetrică (Fernet) și criptarea asimetrică (RSA). În plus, imaginilor criptate li se aplică și funcția hash (SHA256) pentru a proteja conținutul și a asigura integritatea acestora.
+   Pentru sporirea securității și minimizarea riscului interceptării datelor în procesul de transmitere, cheile utilizate pentru criptarea simetrică sunt, la rândul lor, criptate prin intermediul criptării asimetrice RSA, iar documentul rezultat este semnat digital.
 
 ---
 ## Etapele proiectului
   ### Procesul de criptare
-	 Funcțiile utilizate sunt interdependente, dar organizate clar astfel încât să reflecte succesiunea logică a operațiilor necesare securizării fișierelor de tip imagine.
-	Centrul procesului de criptare este reprezentat de funcția crypt() care coordonează toate celelalte funcții implicate în criptarea imaginilor, generarea logului, semnarea digitală și exportul cheii publice. Aceasta funcționează ca un hub central de unde sunt lansate în ordine toate etapele esențiale.
-	Funcțiile apelate în cadrul crypt() sunt următoarele:
+   Funcțiile utilizate sunt interdependente, dar organizate clar astfel încât să reflecte succesiunea logică a operațiilor necesare securizării fișierelor de tip imagine.
+   Centrul procesului de criptare este reprezentat de funcția crypt() care coordonează toate celelalte funcții implicate în criptarea imaginilor, generarea logului, semnarea digitală și exportul cheii publice. Aceasta funcționează ca un hub central de unde sunt lansate în ordine toate etapele esențiale.
+   Funcțiile apelate în cadrul crypt() sunt următoarele:
 - load_image()
 	- deschidere dialog grafic (filedialog.askopenfilenames) ce permite selectarea fisierelor .bmp [1]
 	- căile fisierelor selectate sunt stocate într-o listă ce va fi ulterior folosită în etapele ulterioare
@@ -50,9 +50,9 @@ Funcții auxiliare în procesul de criptare:
   
 ---
   ## Procesul de decriptare
-  Funcțiile sunt organizate clar, respectând succesiunea logică necesară pentru validarea semnăturii, verificarea integrității fișierelor și decriptarea conținutului acestora.
-  Centrul procesului de decriptare este reprezentat de funcția decrypt_and_validate() care coordonează toate celelalte funcții implicate în verificarea semnăturii digitale, încărcarea cheii private, procesarea fișierului CSV, decriptarea fișierelor criptate și afișarea imaginilor originale. 
-  Etapele procesului de decriptare și funcțiile utilizate sunt următoarele:
+   Funcțiile sunt organizate clar, respectând succesiunea logică necesară pentru validarea semnăturii, verificarea integrității fișierelor și decriptarea conținutului acestora.
+   Centrul procesului de decriptare este reprezentat de funcția decrypt_and_validate() care coordonează toate celelalte funcții implicate în verificarea semnăturii digitale, încărcarea cheii private, procesarea fișierului CSV, decriptarea fișierelor criptate și afișarea imaginilor originale. 
+   Etapele procesului de decriptare și funcțiile utilizate sunt următoarele:
 - verify_signature() – verificare semnătura digitală a fișierului key_log.csv
   	- incărcare semnătura digital și decodarea acesteia în Base64
   	- citire conținut și încărcare cheie publică expeditor
@@ -78,8 +78,8 @@ Funcții auxiliare în procesul de criptare:
 ---
 
   ### Interfața grafică
-  Pentru a facilita interacțiunea utilizatorului cu aplicația, proiectul include o interfață grafică dezvoltată cu ajutorul bibliotecii Tkinter, integrată direct în aplicație. Aceasta oferă un mod intuitiv și accesibil de a accesa funcționalitățile cheie ale aplicației, fără a necesita rularea scripturilor din linia de comandă.
-Interfața este organizată în jurul a patru funcționalități principale:
+   Pentru a facilita interacțiunea utilizatorului cu aplicația, proiectul include o interfață grafică dezvoltată cu ajutorul bibliotecii Tkinter, integrată direct în aplicație. Aceasta oferă un mod intuitiv și accesibil de a accesa funcționalitățile cheie ale aplicației, fără a necesita rularea scripturilor din linia de comandă.
+   Interfața este organizată în jurul a patru funcționalități principale:
   - Criptare imagini – crypt()
   - Decriptare imagini – decrypt()
   - Resetare aplicație
@@ -88,7 +88,7 @@ Interfața este organizată în jurul a patru funcționalități principale:
 
 ---
 # Tehnologii și concepte criptografice utilizate
-  În realizarea acestui proiect au fost utilizate multiple tehnologii și algoritmi standard din domeniul securității informatice. Acestea contribuie împreună la asigurarea confidențialității, integrității și autenticității datelor transmise. Mai jos sunt descrise principalele instrumente și concepte aplicate:
+   În realizarea acestui proiect au fost utilizate multiple tehnologii și algoritmi standard din domeniul securității informatice. Acestea contribuie împreună la asigurarea confidențialității, integrității și autenticității datelor transmise. Mai jos sunt descrise principalele instrumente și concepte aplicate:
  **Fernet (criptare simetrică)**
   - Folosit pentru criptarea propriu-zisă a fișierelor de tip imagine.
   - Fernet implementează AES în mod CBC (128-bit) cu un mecanism intern de autentificare (HMAC).
@@ -111,45 +111,45 @@ Interfața este organizată în jurul a patru funcționalități principale:
   - Implementat în funcția `sign()` pentru semnarea fișierului `key_log.csv`.
 
 - **SHA256 (algoritm de hash)**
-  - Algoritm de amprentare criptografică folosit pentru:
-    - Hash-ul imaginii originale;
-    - Hash-ul imaginii criptate;
-    - Generarea semnăturii digitale.
-  - Utilizat pentru verificarea integrității fișierelor și pentru semnăturile digitale.
+  - algoritm de amprentare criptografică folosit pentru:
+    - hash-ul imaginii originale;
+    - hash-ul imaginii criptate;
+    - generarea semnăturii digitale.
+  - utilizat pentru verificarea integrității fișierelor și pentru semnăturile digitale.
 
 - **Base64 (codificare)**
-  - Mecanism de codificare binar-text, utilizat pentru a reprezenta date binare sub formă de șiruri de caractere text.
-  - Utilizat în:
-    - Codificarea cheilor Fernet criptate;
-    - Codificarea semnăturii digitale în fișierul `key_log_signature.txt`.
+  - mecanism de codificare binar-text, utilizat pentru a reprezenta date binare sub formă de șiruri de caractere text.
+  - utilizat în:
+    - codificarea cheilor Fernet criptate;
+    - codificarea semnăturii digitale în fișierul `key_log_signature.txt`.
 
 - **Serialization (încărcare chei criptografice)**
-  - Folosită pentru a încărca cheile RSA (private/publice).
-  - Funcțiile `serialization.load_pem_private_key()` și `serialization.load_pem_public_key()` din modulul `cryptography` sunt utilizate pentru a converti fișierele `.txt` ce conțin chei în obiecte criptografice funcționale. [11]
+  - folosită pentru a încărca cheile RSA (private/publice).
+  - funcțiile `serialization.load_pem_private_key()` și `serialization.load_pem_public_key()` din modulul `cryptography` sunt utilizate pentru a converti fișierele `.txt` ce conțin chei în obiecte criptografice funcționale. [11]
 
 - **Pandas (manipulare fișiere CSV)**
-  - Bibliotecă Python utilizată pentru a crea și salva tabelul `key_log.csv` sub formă de DataFrame.
-  - Permite stocarea organizată a:
-    - Numelui imaginii;
-    - Cheii criptate (Base64);
-    - Hash-urilor SHA256 aferente fiecărei imagini.
+  - bibliotecă Python utilizată pentru a crea și salva tabelul `key_log.csv` sub formă de DataFrame.
+  - permite stocarea organizată a:
+    - numelui imaginii;
+    - vheii criptate (Base64);
+    - hash-urilor SHA256 aferente fiecărei imagini.
 
 - **Tkinter (interfață grafică)**
-  - Biblioteca grafică nativă a limbajului Python.
-  - Utilizată pentru:
-    - Selectarea fișierelor `.bmp` din sistem;
-    - Afișarea de mesaje informative, de eroare sau succes;
-    - Interacțiunea cu utilizatorul în mod intuitiv.
+  - biblioteca grafică nativă a limbajului Python.
+  - utilizată pentru:
+    - selectarea fișierelor `.bmp` din sistem;
+    - afișarea de mesaje informative, de eroare sau succes;
+    - interacțiunea cu utilizatorul în mod intuitiv.
 
 ---
 
 ## Funcționalități principale
-- Criptare imagini folosind chei Fernet generate dinamic
-- Criptare chei simetrice cu RSA + OAEP
-- Semnare digitală a fișierelor criptate
-- Verificare semnătură digitală și integritate imagini
-- Afișare imagini decriptate în interfața grafică
-- Interfață grafică intuitivă (Tkinter)
+- criptare imagini folosind chei Fernet generate dinamic
+- criptare chei simetrice cu RSA + OAEP
+- semnare digitală a fișierelor criptate
+- verificare semnătură digitală și integritate imagini
+- afișare imagini decriptate în interfața grafică
+- interfață grafică intuitivă (Tkinter)
 
 ---
 
