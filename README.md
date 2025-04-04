@@ -89,50 +89,57 @@ Interfața este organizată în jurul a patru funcționalități principale:
 ---
 # Tehnologii și concepte criptografice utilizate
   În realizarea acestui proiect au fost utilizate multiple tehnologii și algoritmi standard din domeniul securității informatice. Acestea contribuie împreună la asigurarea confidențialității, integrității și autenticității datelor transmise. Mai jos sunt descrise principalele instrumente și concepte aplicate:
-4.1. Fernet (criptare simetrică)
-  	- folosit pentru criptarea propriu-zisă a fișierelor de tip imagine.
-  	- Fernet implementează AES în mod CBC (128-bit) cu un mecanism intern de autentificare (HMAC).
-  	- oferă confidențialitate și integritate a datelor criptate într-un singur obiect criptografic.
-  	- se generează o cheie Fernet unică pentru fiecare imagine.
+ **Fernet (criptare simetrică)**
+  - Folosit pentru criptarea propriu-zisă a fișierelor de tip imagine.
+  - Fernet implementează AES în mod CBC (128-bit) cu un mecanism intern de autentificare (HMAC).
+  - Oferă confidențialitate și integritate a datelor criptate într-un singur obiect criptografic.
+  - Se generează o cheie Fernet unică pentru fiecare imagine.
 
-4.2. OAEP (Optimal Asymmetric Encryption Padding)
-	- un algoritm de padding pentru criptarea cu RSA, rezistent la atacuri de tip padding oracle.
- 	- în proiect este utilizat în metoda encrypt_public() pentru criptarea cheilor Fernet.  
- 4.3. RSA (criptare asimetrică) [10]
-	- utilizat pentru criptarea cheilor simetrice Fernet.
-  	- se aplică algoritmul RSA cu padding OAEP (Optimal Asymmetric Encryption Padding) împreună cu funcția de hash SHA256.
-  	- cheile RSA utilizate sunt în format PEM
-  •	asigură că doar destinatarul (care deține cheia privată) poate accesa cheia Fernet aferentă fiecărei imagini.
-4.4. PSS (Probabilistic Signature Scheme)
-	- algoritm utilizat pentru semnătura digitală în combinație cu RSA.
- 	- oferă protecție împotriva atacurilor de tip adaptiv (chosen message attacks).
-  	- implementat în funcția sign() pentru semnarea fișierului key_log.csv 
-4.5. SHA256 (algoritm de hash)
-  	- algoritm de amprentare criptografică folosit pentru:
-	    - hash-ul imaginii originale;
-	    - hash-ul imaginii criptate;
-	    - generarea semnăturii digitale.
-    	- utilizat pentru verificarea integrității fișierelor și pentru semnăturile digitale.
-4.6. Base64 (codificare)
-	- mecanism de codificare binar-text, utilizat pentru a reprezenta date binare (ex: semnături sau chei criptate) sub formă de șiruri de caractere text.
-	- utilizat în:
-	    	- codificarea cheilor Fernet criptate;
-		- codificarea semnăturii digitale în fișierul key_log_signature.txt.
-4.7. Serialization (încărcare chei criptografice)
-    	- folosită pentru a încărca cheile RSA (private/publice)
-    	- funcțiile serialization.load_pem_private_key() și serialization.load_pem_public_key() din modulul cryptography sunt utilizate pentru a converti fișierele .txt ce conțin chei în obiecte criptografice funcționale [11].
-4.8. Pandas (manipulare fișiere CSV)
-	- bibliotecă Python utilizată pentru a crea și salva tabelul key_log.csv sub formă de DataFrame.
-	- permite stocarea organizată a:
-	    - numelui imaginii;
-	    - cheii criptate (Base64);
-	    - hash-urilor SHA256 aferente fiecărei imagini.
-4.9. Tkinter (interfață grafică)
-	- biblioteca grafică nativă a limbajului Python.
-	- utilizată pentru:
-	- selectarea fișierelor .bmp din sistem;
-	- afișarea de mesaje informative, de eroare sau succes;
-	- interacțiunea cu utilizatorul în mod intuitiv.
+- **OAEP (Optimal Asymmetric Encryption Padding)**
+  - Algoritm de padding pentru criptarea cu RSA, rezistent la atacuri de tip padding oracle.
+  - Utilizat în metoda `encrypt_public()` pentru criptarea cheilor Fernet.
+
+- **RSA (criptare asimetrică)** [10]
+  - Utilizat pentru criptarea cheilor simetrice Fernet.
+  - Se aplică algoritmul RSA cu padding OAEP împreună cu funcția de hash SHA256.
+  - Cheile RSA utilizate sunt în format PEM.
+  - Asigură că doar destinatarul (care deține cheia privată) poate accesa cheia Fernet aferentă fiecărei imagini.
+
+- **PSS (Probabilistic Signature Scheme)**
+  - Algoritm utilizat pentru semnătura digitală în combinație cu RSA.
+  - Oferă protecție împotriva atacurilor de tip adaptiv (chosen message attacks).
+  - Implementat în funcția `sign()` pentru semnarea fișierului `key_log.csv`.
+
+- **SHA256 (algoritm de hash)**
+  - Algoritm de amprentare criptografică folosit pentru:
+    - Hash-ul imaginii originale;
+    - Hash-ul imaginii criptate;
+    - Generarea semnăturii digitale.
+  - Utilizat pentru verificarea integrității fișierelor și pentru semnăturile digitale.
+
+- **Base64 (codificare)**
+  - Mecanism de codificare binar-text, utilizat pentru a reprezenta date binare sub formă de șiruri de caractere text.
+  - Utilizat în:
+    - Codificarea cheilor Fernet criptate;
+    - Codificarea semnăturii digitale în fișierul `key_log_signature.txt`.
+
+- **Serialization (încărcare chei criptografice)**
+  - Folosită pentru a încărca cheile RSA (private/publice).
+  - Funcțiile `serialization.load_pem_private_key()` și `serialization.load_pem_public_key()` din modulul `cryptography` sunt utilizate pentru a converti fișierele `.txt` ce conțin chei în obiecte criptografice funcționale. [11]
+
+- **Pandas (manipulare fișiere CSV)**
+  - Bibliotecă Python utilizată pentru a crea și salva tabelul `key_log.csv` sub formă de DataFrame.
+  - Permite stocarea organizată a:
+    - Numelui imaginii;
+    - Cheii criptate (Base64);
+    - Hash-urilor SHA256 aferente fiecărei imagini.
+
+- **Tkinter (interfață grafică)**
+  - Biblioteca grafică nativă a limbajului Python.
+  - Utilizată pentru:
+    - Selectarea fișierelor `.bmp` din sistem;
+    - Afișarea de mesaje informative, de eroare sau succes;
+    - Interacțiunea cu utilizatorul în mod intuitiv.
 
 ---
 
