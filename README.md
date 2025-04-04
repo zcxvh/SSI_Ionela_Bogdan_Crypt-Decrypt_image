@@ -17,7 +17,7 @@
 ## Etapele proiectului
   ### Procesul de criptare
 	 Funcțiile utilizate sunt interdependente, dar organizate clar astfel încât să reflecte succesiunea logică a operațiilor necesare securizării fișierelor de tip imagine.
-Centrul procesului de criptare este reprezentat de funcția crypt() care coordonează toate celelalte funcții implicate în criptarea imaginilor, generarea logului, semnarea digitală și exportul cheii publice. Aceasta funcționează ca un hub central de unde sunt lansate în ordine toate etapele esențiale.
+	Centrul procesului de criptare este reprezentat de funcția crypt() care coordonează toate celelalte funcții implicate în criptarea imaginilor, generarea logului, semnarea digitală și exportul cheii publice. Aceasta funcționează ca un hub central de unde sunt lansate în ordine toate etapele esențiale.
 	Funcțiile apelate în cadrul crypt() sunt următoarele:
 - load_image()
 	- deschidere dialog grafic (filedialog.askopenfilenames) ce permite selectarea fisierelor .bmp [1]
