@@ -14,38 +14,38 @@ Principalul obiectiv al proiectului constă în implementarea corectă și efici
 Pentru sporirea securității și minimizarea riscului interceptării datelor în procesul de transmitere, cheile utilizate pentru criptarea simetrică sunt, la rândul lor, criptate prin intermediul criptării asimetrice RSA, iar documentul rezultat este semnat digital.
 
 ---
-## Etapele-proiectului
+## Etapele proiectului
   ### Procesul de criptare
 	 Funcțiile utilizate sunt interdependente, dar organizate clar astfel încât să reflecte succesiunea logică a operațiilor necesare securizării fișierelor de tip imagine.
 Centrul procesului de criptare este reprezentat de funcția crypt() care coordonează toate celelalte funcții implicate în criptarea imaginilor, generarea logului, semnarea digitală și exportul cheii publice. Aceasta funcționează ca un hub central de unde sunt lansate în ordine toate etapele esențiale.
-Funcțiile apelate în cadrul crypt() sunt următoarele:
--	load_image()
-  •	deschidere dialog grafic (filedialog.askopenfilenames) ce permite selectarea fisierelor .bmp [1]
-  •	căile fisierelor selectate sunt stocate într-o listă ce va fi ulterior folosită în etapele ulterioare
-o	crypt_image(file_path_list) 
-  •	citire conținut poze în bytes
-  •	generare cheie Fernet pentru fiecare imagine în parte (criptare simetrică)
-  •	criptare conținut imagine folosind cheia simetrică generată
-  •	salvare imaginea criptată ca și fișier .bin
-  •	cheia și imaginea criptată sunt salvate în listele globale key și encrypt
+	Funcțiile apelate în cadrul crypt() sunt următoarele:
+- load_image()
+	- deschidere dialog grafic (filedialog.askopenfilenames) ce permite selectarea fisierelor .bmp [1]
+	- căile fisierelor selectate sunt stocate într-o listă ce va fi ulterior folosită în etapele ulterioare
+- crypt_image(file_path_list) 
+  	- citire conținut poze în bytes
+  	- generare cheie Fernet pentru fiecare imagine în parte (criptare simetrică)
+  	- criptare conținut imagine folosind cheia simetrică generată
+  	- salvare imaginea criptată ca și fișier .bin
+  	- cheia și imaginea criptată sunt salvate în listele globale key și encrypt
 Această funcție este responsabilă direct de criptarea fișierelor de intrare. 
-o	generate_files() [2]
-  •	criptare chei Fernet folosind cheia publică (s-a folosit RSA-OAEP)
-  •	calculare a doua hash-uri SHA256 pentru fiecare imagine (versiunea originală+versiunea criptată)
-  •	creare DataFrame (pandas) cu informațiile necesare (nume_fișier, cheia_criptată, hash-uri)
-  •	salvare informații intr-un fișier .csv (key_log.csv)
-o	sign_document() [3, 4]
-  •	încărcare fișier key_log.csv[5, 6] și cheia private a expeditorului
-  •	apelează sign() pentru semnarea conținutului fișierului
-  • salvare semnătură digitală într-un fișier key_log_signature.txt (Base64-encoded) [7]
-o	export_key_public_expeditor() – funcție care copiază cheia publică a expeditorului din folderul de configurare și o salvează în directorul de ieșire (OUT_FOLDER), pentru a fi trimisă destinatarului.
-  •	utilizată pentru verificarea semnăturii digitale.
+- generate_files() [2]
+	- criptare chei Fernet folosind cheia publică (s-a folosit RSA-OAEP)
+ 	- calculare a doua hash-uri SHA256 pentru fiecare imagine (versiunea originală+versiunea criptată)
+	- creare DataFrame (pandas) cu informațiile necesare (nume_fișier, cheia_criptată, hash-uri)
+	- salvare informații intr-un fișier .csv (key_log.csv)
+	- sign_document() [3, 4]
+   	- încărcare fișier key_log.csv[5, 6] și cheia private a expeditorului
+	- apelează sign() pentru semnarea conținutului fișierului
+   	- salvare semnătură digitală într-un fișier key_log_signature.txt (Base64-encoded) [7]
+- export_key_public_expeditor() – funcție care copiază cheia publică a expeditorului din folderul de configurare și o salvează în directorul de ieșire (OUT_FOLDER), pentru a fi trimisă destinatarului.
+  	- utilizată pentru verificarea semnăturii digitale.
 Funcții auxiliare în procesul de criptare:
-o	sign(message,private_key)  – funcție folosită pentru semnarea digitală și returnează semnătura digitală PSS (Probabilistic Signature Scheme) generate cu SHA256
-  •	primește o cheie RSA privată
-  •	encrypt_public (message,public_key) – funcție care criptează un mesaj (cheia Fernet)[8]
-  •	se utilizează criptarea asimetrică RSA și padding OAEP
-  •	utilizată în generare_fișiere() pentru protejarea cheilor simetrice
+- sign(message,private_key)  – funcție folosită pentru semnarea digitală și returnează semnătura digitală PSS (Probabilistic Signature Scheme) generate cu SHA256
+	- primește o cheie RSA privată
+ 	- dencrypt_public (message,public_key) – funcție care criptează un mesaj (cheia Fernet)[8]
+	- se utilizează criptarea asimetrică RSA și padding OAEP
+   	- utilizată în generare_fișiere() pentru protejarea cheilor simetrice
 
   
 ---
@@ -53,27 +53,27 @@ o	sign(message,private_key)  – funcție folosită pentru semnarea digitală ș
   Funcțiile sunt organizate clar, respectând succesiunea logică necesară pentru validarea semnăturii, verificarea integrității fișierelor și decriptarea conținutului acestora.
   Centrul procesului de decriptare este reprezentat de funcția decrypt_and_validate() care coordonează toate celelalte funcții implicate în verificarea semnăturii digitale, încărcarea cheii private, procesarea fișierului CSV, decriptarea fișierelor criptate și afișarea imaginilor originale. 
   Etapele procesului de decriptare și funcțiile utilizate sunt următoarele:
-o	verify_signature() – verificare semnătura digitală a fișierului key_log.csv
-  •	incărcare semnătura digital și decodarea acesteia în Base64
-  •	citire conținut și încărcare cheie publică expeditor
-  •	utilizarea algoritmului RSA-PSS cu SHA256 pentru verificare
-  •	verificare semnătură
+- verify_signature() – verificare semnătura digitală a fișierului key_log.csv
+  	- incărcare semnătura digital și decodarea acesteia în Base64
+  	- citire conținut și încărcare cheie publică expeditor
+  	- utilizarea algoritmului RSA-PSS cu SHA256 pentru verificare
+  	- verificare semnătură
   Se asigură autenticitatea expeditorului și integritatea.
-o	verify_file_integrity(private_key, df) – funcție pentru validare imaginilor criptate
-  •	parcurgere fișier binar (.bin) primit 
-  •	calculare hash SHA256 al imaginii criptate și comparare cu valoarea din key_log.csv
-  •	succes – decodare cheie Fernet (Base64) și decriptare cu cheia folosind OAEP cu SHA256
-  •	eroare – fișierul binar a fost corupt se oprește procesul de decritare
-  •	decriptare imagine cu cheia Fernet
-  •	recalculare hash pentru imaginea decriptată și se compară cu hash-ul original din csv
-  •	imaginea este considerate validă și este adăugată în lista fișiere_valide
+- verify_file_integrity(private_key, df) – funcție pentru validare imaginilor criptate
+  	- parcurgere fișier binar (.bin) primit 
+  	- calculare hash SHA256 al imaginii criptate și comparare cu valoarea din key_log.csv
+  	- succes – decodare cheie Fernet (Base64) și decriptare cu cheia folosind OAEP cu SHA256
+  	- eroare – fișierul binar a fost corupt se oprește procesul de decritare
+  	- decriptare imagine cu cheia Fernet
+  	- recalculare hash pentru imaginea decriptată și se compară cu hash-ul original din csv
+  	- imaginea este considerate validă și este adăugată în lista fișiere_valide
   Se verifică astfel integritatea imaginii criptate, căt și autenticitatea imaginii originale
-o	decrypt_and_show_image(fișiere_valide)
-  •	încărcare conținut imagine (Image.open) [9]
-  •	validare format intern (image,verify()) 
-  •	reîncărcare imagine și afișare pe ecran
-  •	salvare imagini în fișierul DECRYPT_FOLDER
-  •	afișare mesaj de succes în interfață
+- ecrypt_and_show_image(fișiere_valide)
+  	- încărcare conținut imagine (Image.open) [9]
+  	- validare format intern (image,verify()) 
+  	- reîncărcare imagine și afișare pe ecran
+  	- salvare imagini în fișierul DECRYPT_FOLDER
+  	- afișare mesaj de succes în interfață
   
 ---
 
@@ -90,49 +90,49 @@ Interfața este organizată în jurul a patru funcționalități principale:
 # Tehnologii și concepte criptografice utilizate
   În realizarea acestui proiect au fost utilizate multiple tehnologii și algoritmi standard din domeniul securității informatice. Acestea contribuie împreună la asigurarea confidențialității, integrității și autenticității datelor transmise. Mai jos sunt descrise principalele instrumente și concepte aplicate:
 4.1. Fernet (criptare simetrică)
-  •	folosit pentru criptarea propriu-zisă a fișierelor de tip imagine.
-  •	Fernet implementează AES în mod CBC (128-bit) cu un mecanism intern de autentificare (HMAC).
-  •	oferă confidențialitate și integritate a datelor criptate într-un singur obiect criptografic.
-  •	se generează o cheie Fernet unică pentru fiecare imagine.
+  	- folosit pentru criptarea propriu-zisă a fișierelor de tip imagine.
+  	- Fernet implementează AES în mod CBC (128-bit) cu un mecanism intern de autentificare (HMAC).
+  	- oferă confidențialitate și integritate a datelor criptate într-un singur obiect criptografic.
+  	- se generează o cheie Fernet unică pentru fiecare imagine.
 
 4.2. OAEP (Optimal Asymmetric Encryption Padding)
-  •	un algoritm de padding pentru criptarea cu RSA, rezistent la atacuri de tip padding oracle.
-  •	în proiect este utilizat în metoda encrypt_public() pentru criptarea cheilor Fernet.  
+	- un algoritm de padding pentru criptarea cu RSA, rezistent la atacuri de tip padding oracle.
+ 	- în proiect este utilizat în metoda encrypt_public() pentru criptarea cheilor Fernet.  
  4.3. RSA (criptare asimetrică) [10]
-  •	utilizat pentru criptarea cheilor simetrice Fernet.
-  •	se aplică algoritmul RSA cu padding OAEP (Optimal Asymmetric Encryption Padding) împreună cu funcția de hash SHA256.
-  •	cheile RSA utilizate sunt în format PEM
+	- utilizat pentru criptarea cheilor simetrice Fernet.
+  	- se aplică algoritmul RSA cu padding OAEP (Optimal Asymmetric Encryption Padding) împreună cu funcția de hash SHA256.
+  	- cheile RSA utilizate sunt în format PEM
   •	asigură că doar destinatarul (care deține cheia privată) poate accesa cheia Fernet aferentă fiecărei imagini.
 4.4. PSS (Probabilistic Signature Scheme)
-  •	algoritm utilizat pentru semnătura digitală în combinație cu RSA.
-  •	oferă protecție împotriva atacurilor de tip adaptiv (chosen message attacks).
-  •	implementat în funcția sign() pentru semnarea fișierului key_log.csv 
+	- algoritm utilizat pentru semnătura digitală în combinație cu RSA.
+ 	- oferă protecție împotriva atacurilor de tip adaptiv (chosen message attacks).
+  	- implementat în funcția sign() pentru semnarea fișierului key_log.csv 
 4.5. SHA256 (algoritm de hash)
-  •	algoritm de amprentare criptografică folosit pentru:
-    - hash-ul imaginii originale;
-    - hash-ul imaginii criptate;
-    - generarea semnăturii digitale.
-    - utilizat pentru verificarea integrității fișierelor și pentru semnăturile digitale.
+  	- algoritm de amprentare criptografică folosit pentru:
+	    - hash-ul imaginii originale;
+	    - hash-ul imaginii criptate;
+	    - generarea semnăturii digitale.
+    	- utilizat pentru verificarea integrității fișierelor și pentru semnăturile digitale.
 4.6. Base64 (codificare)
-  •	mecanism de codificare binar-text, utilizat pentru a reprezenta date binare (ex: semnături sau chei criptate) sub formă de șiruri de caractere text.
-  •	utilizat în:
-    - codificarea cheilor Fernet criptate;
-	  - codificarea semnăturii digitale în fișierul key_log_signature.txt.
+	- mecanism de codificare binar-text, utilizat pentru a reprezenta date binare (ex: semnături sau chei criptate) sub formă de șiruri de caractere text.
+	- utilizat în:
+	    	- codificarea cheilor Fernet criptate;
+		- codificarea semnăturii digitale în fișierul key_log_signature.txt.
 4.7. Serialization (încărcare chei criptografice)
-    - folosită pentru a încărca cheile RSA (private/publice)
-    - funcțiile serialization.load_pem_private_key() și serialization.load_pem_public_key() din modulul cryptography sunt utilizate pentru a converti fișierele .txt ce conțin chei în obiecte criptografice funcționale [11].
+    	- folosită pentru a încărca cheile RSA (private/publice)
+    	- funcțiile serialization.load_pem_private_key() și serialization.load_pem_public_key() din modulul cryptography sunt utilizate pentru a converti fișierele .txt ce conțin chei în obiecte criptografice funcționale [11].
 4.8. Pandas (manipulare fișiere CSV)
-  -	bibliotecă Python utilizată pentru a crea și salva tabelul key_log.csv sub formă de DataFrame.
-  -	permite stocarea organizată a:
-    - numelui imaginii;
-    - cheii criptate (Base64);
-    - hash-urilor SHA256 aferente fiecărei imagini.
+	- bibliotecă Python utilizată pentru a crea și salva tabelul key_log.csv sub formă de DataFrame.
+	- permite stocarea organizată a:
+	    - numelui imaginii;
+	    - cheii criptate (Base64);
+	    - hash-urilor SHA256 aferente fiecărei imagini.
 4.9. Tkinter (interfață grafică)
-  - biblioteca grafică nativă a limbajului Python.
-  - utilizată pentru:
-  - selectarea fișierelor .bmp din sistem;
-  - afișarea de mesaje informative, de eroare sau succes;
-- interacțiunea cu utilizatorul în mod intuitiv.
+	- biblioteca grafică nativă a limbajului Python.
+	- utilizată pentru:
+	- selectarea fișierelor .bmp din sistem;
+	- afișarea de mesaje informative, de eroare sau succes;
+	- interacțiunea cu utilizatorul în mod intuitiv.
 
 ---
 
