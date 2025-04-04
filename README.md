@@ -9,9 +9,9 @@
 - [Tehnologii și concepte criptografice utilizate](#Tehnologii-si-concepte-criptografice-utilizate)
 - [Bibliografie](#bibliografie)
 ## Scop
-Principalul obiectiv al proiectului constă în implementarea corectă și eficientă a conceptelor esențiale din domeniul securității informatice: confidențialitatea, integritatea, și non-repudierea.
+	Principalul obiectiv al proiectului constă în implementarea corectă și eficientă a conceptelor esențiale din domeniul securității informatice: confidențialitatea, integritatea, și non-repudierea.
 	Proiectul se axează pe securizarea transmiterii unor imagini, folosind criptarea simetrică (Fernet) și criptarea asimetrică (RSA). În plus, imaginilor criptate li se aplică și funcția hash (SHA256) pentru a proteja conținutul și a asigura integritatea acestora.
-Pentru sporirea securității și minimizarea riscului interceptării datelor în procesul de transmitere, cheile utilizate pentru criptarea simetrică sunt, la rândul lor, criptate prin intermediul criptării asimetrice RSA, iar documentul rezultat este semnat digital.
+	Pentru sporirea securității și minimizarea riscului interceptării datelor în procesul de transmitere, cheile utilizate pentru criptarea simetrică sunt, la rândul lor, criptate prin intermediul criptării asimetrice RSA, iar documentul rezultat este semnat digital.
 
 ---
 ## Etapele proiectului
