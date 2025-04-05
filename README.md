@@ -85,8 +85,37 @@ Funcții auxiliare în procesul de criptare:
   - Resetare aplicație
   - Generare chei – generate_key()
   - Corupere fișier – alterate_file()
+----
+### Interfața principală
+
+![Interfața principală](./images/Interfata.png)
 
 ---
+
+### Selectarea unei imagini pentru criptare
+![Selectare imagine](./images/Criptare_selectare_img.png)
+
+---
+### Generarea cheilor RSA
+
+![Generare chei RSA](./images/Generare_chei_RSA.png)
+
+---
+### Resetarea aplicației
+
+![Resetare aplicație](./images/Reset.png)
+
+---
+### Confirmare criptare reușită
+
+![Criptare reușită](./images/Criptare_mesaj_criptare_reusita.png)
+
+---
+
+### Confirmare imagine selectată
+
+![Imagine selectată pentru criptare](./images/Criptare_mesaj_poza_selectata.png)
+
 # Tehnologii și concepte criptografice utilizate
    În realizarea acestui proiect au fost utilizate multiple tehnologii și algoritmi standard din domeniul securității informatice. Acestea contribuie împreună la asigurarea confidențialității, integrității și autenticității datelor transmise. Mai jos sunt descrise principalele instrumente și concepte aplicate:
  **Fernet (criptare simetrică)**
