@@ -88,33 +88,41 @@ Funcții auxiliare în procesul de criptare:
 ----
 ### Interfața principală
 
-![Interfața principală](./images/Interfata.png)
+<h3>Interfața principală</h3>
+
+<img src="./images/Interfata.png" alt="Interfața principală" width="600"/>
 
 ---
 
-### Selectarea unei imagini pentru criptare
-![Selectare imagine](./images/Criptare_selectare_img.png)
+<h3>Resetarea aplicației</h3>
 
----
-### Generarea cheilor RSA
-
-![Generare chei RSA](./images/Generare_chei_RSA.png)
-
----
-### Resetarea aplicației
-
-![Resetare aplicație](./images/Reset.png)
-
----
-### Confirmare criptare reușită
-
-![Criptare reușită](./images/Criptare_mesaj_criptare_reusita.png)
+<img src="./images/Reset.png" alt="Resetare aplicație" width="600"/>
 
 ---
 
-### Confirmare imagine selectată
+<h3>Generarea cheilor RSA</h3>
 
-![Imagine selectată pentru criptare](./images/Criptare_mesaj_poza_selectata.png)
+<img src="./images/Generare_chei_RSA.png" alt="Generare chei RSA" width="600"/>
+
+---
+
+<h3>Selectarea unei imagini pentru criptare</h3>
+
+<img src="./images/Criptare_selectare_img.png" alt="Selectare imagine" width="600"/>
+
+---
+
+<h3>Confirmare imagine selectată</h3>
+
+<img src="./images/Criptare_mesaj_poza_selectata.png" alt="Imagine selectată pentru criptare" width="600"/>
+
+---
+
+<h3>Confirmare criptare reușită</h3>
+
+<img src="./images/Criptare_mesaj_criptare_reusita.png" alt="Criptare reușită" width="600"/>
+
+
 
 # Tehnologii și concepte criptografice utilizate
    În realizarea acestui proiect au fost utilizate multiple tehnologii și algoritmi standard din domeniul securității informatice. Acestea contribuie împreună la asigurarea confidențialității, integrității și autenticității datelor transmise. Mai jos sunt descrise principalele instrumente și concepte aplicate:
