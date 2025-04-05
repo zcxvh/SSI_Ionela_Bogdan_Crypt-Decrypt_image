@@ -7,6 +7,7 @@
 - [Procesul de decriptare](#Procesul-de-decriptare)
 - [Interfața grafică](#Interfata-grafica)
 - [Tehnologii și concepte criptografice utilizate](#Tehnologii-si-concepte-criptografice-utilizate)
+- [Anexa 1](#Anexa-1)
 - [Bibliografie](#bibliografie)
 ## Scop
    Principalul obiectiv al proiectului constă în implementarea corectă și eficientă a conceptelor esențiale din domeniul securității informatice: confidențialitatea, integritatea, și non-repudierea.
@@ -224,7 +225,11 @@ Funcții auxiliare în procesul de criptare:
 - interfață grafică intuitivă (Tkinter)
 
 ---
+## Anexa 1
+Procesele dezvoltate în cadrul proiectului sunt descrise ilustrativ în figura din Anexa 1
+<img src="./images/Alterare_fisier_binar_la_decriptare_mesaj_de_eroare.png" alt="Eroare de integritate la decriptare" width="600"/>
 
+---
 ## Bibliografie
 [1] Python Software Foundation, (n.d.), *tkinter.simpledialog — Standard Tkinter input dialogs*, Python Documentation, [Accesat la 21.03.2025], [Link](https://docs.python.org/3/library/dialog.html)
 
