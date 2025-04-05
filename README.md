@@ -5,8 +5,8 @@
 - [Etapele proiectului](#Etapele-proiectului)
 - [Procesul de criptare](#Procesul-de-criptare)
 - [Procesul de decriptare](#Procesul-de-decriptare)
-- [Interfața grafică](#Interfata-grafica)
-- [Tehnologii și concepte criptografice utilizate](#Tehnologii-si-concepte-criptografice-utilizate)
+- [Interfata grafica](#Interfata-grafica)
+- [Tehnologii si concepte criptografice utilizate](#Tehnologii-si-concepte-criptografice-utilizate)
 - [Anexa 1](#Anexa-1)
 - [Bibliografie](#bibliografie)
 ## Scop
@@ -78,7 +78,7 @@ Funcții auxiliare în procesul de criptare:
   
 ---
 
-  ### Interfața grafică
+  ### Interfata grafica
    Pentru a facilita interacțiunea utilizatorului cu aplicația, proiectul include o interfață grafică dezvoltată cu ajutorul bibliotecii Tkinter, integrată direct în aplicație. Aceasta oferă un mod intuitiv și accesibil de a accesa funcționalitățile cheie ale aplicației, fără a necesita rularea scripturilor din linia de comandă.
    Interfața este organizată în jurul a patru funcționalități principale:
   - Criptare imagini – crypt()
@@ -160,7 +160,7 @@ Funcții auxiliare în procesul de criptare:
 
 ---
 
-## Tehnologii și concepte criptografice utilizate
+## Tehnologii si concepte criptografice utilizate
    În realizarea acestui proiect au fost utilizate multiple tehnologii și algoritmi standard din domeniul securității informatice. Acestea contribuie împreună la asigurarea confidențialității, integrității și autenticității datelor transmise. Mai jos sunt descrise principalele instrumente și concepte aplicate:
  **Fernet (criptare simetrică)**
   - Folosit pentru criptarea propriu-zisă a fișierelor de tip imagine.
