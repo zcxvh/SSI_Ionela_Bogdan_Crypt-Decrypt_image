@@ -122,7 +122,42 @@ Funcții auxiliare în procesul de criptare:
 
 <img src="./images/Criptare_mesaj_criptare_reusita.png" alt="Criptare reușită" width="600"/>
 
+---
+<h3>Fișier semnat cu succes
+	
+<img src="./images/Fisier_semnat_cu_sicces.png" alt="Fișier semnat digital cu succes" width="600"/>
 
+---
+<h3>Fișier pregătit pentru transmitere la receiver
+	
+<img src="./images/Fisier_prergatit_pt_trimis_la_receiver.png" alt="Fișier pregătit pentru transmitere" width="600"/>
+
+---
+<h3>Decriptare reușită - Mesaj validare
+	
+<img src="./images/Decriptare_mesaj.png" alt="Mesaj validare decriptare" width="600"/>
+
+---
+<h3>Decriptare reușită - Imagine validată și afișată
+	
+<img src="./images/Decriptare_mesaj+poza.png" alt="Imagine decriptată și validată" width="600"/>
+
+---
+<h3>Comparare imagine originală vs imagine criptată
+	
+<img src="./images/Comparare_img_originala_criptata.png" alt="Comparare imagine originală și criptată" width="600"/>
+
+---
+<h3>Alterare fișier binar
+	
+<img src="./images/Alterare_fisier_binar.png" alt="Fișier binar alterat" width="600"/>
+
+---
+<h3>Eroare la decriptare după alterarea fișierului
+	
+<img src="./images/Alterare_fisier_binar_la_decriptare_mesaj_de_eroare.png" alt="Eroare de integritate la decriptare" width="600"/>
+
+---
 
 # Tehnologii și concepte criptografice utilizate
    În realizarea acestui proiect au fost utilizate multiple tehnologii și algoritmi standard din domeniul securității informatice. Acestea contribuie împreună la asigurarea confidențialității, integrității și autenticității datelor transmise. Mai jos sunt descrise principalele instrumente și concepte aplicate:
