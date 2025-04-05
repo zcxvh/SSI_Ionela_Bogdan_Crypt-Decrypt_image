@@ -227,7 +227,7 @@ Funcții auxiliare în procesul de criptare:
 ---
 ## Anexa 1
 Procesele dezvoltate în cadrul proiectului sunt descrise ilustrativ în figura din Anexa 1
-<img src="./images/Alterare_fisier_binar_la_decriptare_mesaj_de_eroare.png" alt="Eroare de integritate la decriptare" width="600"/>
+<img src="./images/Anexa 1. Schemă procese.png" alt="Eroare" width="600"/>
 
 ---
 ## Bibliografie
