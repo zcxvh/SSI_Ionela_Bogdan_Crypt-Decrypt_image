@@ -215,18 +215,7 @@ Funcții auxiliare în procesul de criptare:
     - interacțiunea cu utilizatorul în mod intuitiv.
 
 ---
-
-## Funcționalități principale
-- criptare imagini folosind chei Fernet generate dinamic
-- criptare chei simetrice cu RSA + OAEP
-- semnare digitală a fișierelor criptate
-- verificare semnătură digitală și integritate imagini
-- afișare imagini decriptate în interfața grafică
-- interfață grafică intuitivă (Tkinter)
-
----
 ## Anexa 1
-Procesele dezvoltate în cadrul proiectului sunt descrise ilustrativ în figura din Anexa 1
 <img src="./images/Anexa 1. Schemă procese.png" alt="Eroare" width="600"/>
 
 ---
