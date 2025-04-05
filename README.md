@@ -50,7 +50,7 @@ Funcții auxiliare în procesul de criptare:
 
   
 ---
-  ## Procesul de decriptare
+  ### Procesul de decriptare
    Funcțiile sunt organizate clar, respectând succesiunea logică necesară pentru validarea semnăturii, verificarea integrității fișierelor și decriptarea conținutului acestora.
    Centrul procesului de decriptare este reprezentat de funcția decrypt_and_validate() care coordonează toate celelalte funcții implicate în verificarea semnăturii digitale, încărcarea cheii private, procesarea fișierului CSV, decriptarea fișierelor criptate și afișarea imaginilor originale. 
    Etapele procesului de decriptare și funcțiile utilizate sunt următoarele:
@@ -87,7 +87,7 @@ Funcții auxiliare în procesul de criptare:
   - Generare chei – generate_key()
   - Corupere fișier – alterate_file()
 ----
-### Interfața principală
+#### Interfața principală
 
 <h3>Interfața principală</h3>
 
@@ -160,7 +160,7 @@ Funcții auxiliare în procesul de criptare:
 
 ---
 
-# Tehnologii și concepte criptografice utilizate
+## Tehnologii și concepte criptografice utilizate
    În realizarea acestui proiect au fost utilizate multiple tehnologii și algoritmi standard din domeniul securității informatice. Acestea contribuie împreună la asigurarea confidențialității, integrității și autenticității datelor transmise. Mai jos sunt descrise principalele instrumente și concepte aplicate:
  **Fernet (criptare simetrică)**
   - Folosit pentru criptarea propriu-zisă a fișierelor de tip imagine.
