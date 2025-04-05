@@ -87,8 +87,6 @@ Funcții auxiliare în procesul de criptare:
   - Generare chei – generate_key()
   - Corupere fișier – alterate_file()
 ----
-#### Interfața principală
-
 <h3>Interfața principală</h3>
 
 <img src="./images/Interfata.png" alt="Interfața principală" width="600"/>
