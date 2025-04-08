@@ -77,6 +77,8 @@ Funcții auxiliare în procesul de criptare:
   	- afișare mesaj de succes în interfață
   
 ---
+## Anexa 1
+<img src="./images/Anexa 1. Schemă procese.png" alt="Eroare" width="600"/>
 
   ### Interfata grafica
    Pentru a facilita interacțiunea utilizatorului cu aplicația, proiectul include o interfață grafică dezvoltată cu ajutorul bibliotecii Tkinter, integrată direct în aplicație. Aceasta oferă un mod intuitiv și accesibil de a accesa funcționalitățile cheie ale aplicației, fără a necesita rularea scripturilor din linia de comandă.
@@ -213,8 +215,7 @@ Funcții auxiliare în procesul de criptare:
     - interacțiunea cu utilizatorul în mod intuitiv.
 
 ---
-## Anexa 1
-<img src="./images/Anexa 1. Schemă procese.png" alt="Eroare" width="600"/>
+
 
 ---
 ## Bibliografie
